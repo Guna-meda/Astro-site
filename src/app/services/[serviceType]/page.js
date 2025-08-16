@@ -1,0 +1,326 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import { ArrowLeft, CheckCircle, Clock, Calendar } from "lucide-react";
+
+// Mock data for different service types
+const serviceData = {
+  ceremonies: {
+    title: "Traditional Ceremonies",
+    description:
+      "Our expertly performed ceremonies honor ancient traditions while creating meaningful experiences for your most important life events.",
+    image:
+      "https://images.pexels.com/photos/9956095/pexels-photo-9956095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    subServices: [
+      {
+        title: "Marriage Ceremony",
+        description:
+          "Traditional Hindu wedding ceremonies performed with authentic rituals and mantras.",
+        duration: "4-6 hours",
+        price: "Customized package",
+        features: [
+          "Pre-wedding rituals and consultation",
+          "Complete Vedic marriage ceremony",
+          "Explanation of each ritual for guests",
+          "Post-wedding blessings",
+          "Marriage certificate",
+        ],
+      },
+      {
+        title: "Engagement Ceremony",
+        description:
+          "Auspicious engagement ceremonies to formalize the commitment between couples.",
+        duration: "1-2 hours",
+        price: "Customized package",
+        features: [
+          "Ring exchange ceremony",
+          "Traditional blessings",
+          "Auspicious muhurta selection",
+          "Family involvement guidance",
+        ],
+      },
+      {
+        title: "Griha Pravesh (House Warming)",
+        description:
+          "Sacred house warming ceremonies to invite positive energy into your new home.",
+        duration: "2-3 hours",
+        price: "Customized package",
+        features: [
+          "Vastu evaluation",
+          "Ganesh puja",
+          "Agni sthapana",
+          "Room purification",
+          "Prosperity prayers",
+        ],
+      },
+      {
+        title: "Naming Ceremony",
+        description:
+          "Traditional naming ceremonies for newborns based on astrological calculations.",
+        duration: "1-2 hours",
+        price: "Customized package",
+        features: [
+          "Astrological name selection",
+          "Sacred rituals",
+          "Family blessings",
+          "Certificate",
+        ],
+      },
+    ],
+  },
+  astrology: {
+    title: "Astrological Consultations",
+    description:
+      "Our astrological services provide insights and guidance based on the ancient wisdom of Vedic astrology.",
+    image:
+      "https://images.pexels.com/photos/6669369/pexels-photo-6669369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    subServices: [
+      {
+        title: "Complete Birth Chart Analysis",
+        description:
+          "Comprehensive analysis of your birth chart revealing your life path, strengths, and challenges.",
+        duration: "60-90 minutes",
+        price: "Customized package",
+        features: [
+          "Detailed natal chart preparation",
+          "Analysis of all 12 houses",
+          "Planetary positions and aspects",
+          "Dasha predictions",
+          "Written report (optional)",
+        ],
+      },
+      {
+        title: "Compatibility Analysis",
+        description:
+          "Detailed marriage compatibility analysis for couples based on Vedic astrological principles.",
+        duration: "45-60 minutes",
+        price: "Customized package",
+        features: [
+          "Ashtakoot matching",
+          "Mangal dosha analysis",
+          "Long-term compatibility factors",
+          "Remedial measures if needed",
+        ],
+      },
+      {
+        title: "Career Guidance",
+        description:
+          "Astrological insights into your career path, opportunities, and best professional directions.",
+        duration: "45-60 minutes",
+        price: "Customized package",
+        features: [
+          "Analysis of 10th house",
+          "Planetary influences on career",
+          "Timing of opportunities",
+          "Strengths and challenges",
+        ],
+      },
+      {
+        title: "Annual Predictions",
+        description:
+          "Detailed forecast for the coming year with important dates and transitions.",
+        duration: "60 minutes",
+        price: "Customized package",
+        features: [
+          "Transit analysis",
+          "Dasha predictions",
+          "Monthly breakdown",
+          "Remedial measures",
+          "Important dates",
+        ],
+      },
+    ],
+  },
+  // 🔹 Add vastu, poojas, corporate, gems as in your full code
+};
+
+export default function ServiceDetailPage({ params }) {
+  const { serviceType } = params;
+  const [service, setService] = useState(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (serviceType && serviceData[serviceType]) {
+      setService(serviceData[serviceType]);
+    }
+  }, [serviceType]);
+
+  if (!service) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-heading font-semibold text-primary-dark mb-4">
+            Service not found
+          </h2>
+          <Link href="/services" className="btn-primary">
+            Back to Services
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Hero Banner */}
+      <section className="relative py-20 bg-background-light temple-pattern">
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0 opacity-20"
+          style={{ backgroundImage: `url(${service.image})` }}
+        ></div>
+        <div className="container-custom relative z-10 py-16">
+          <Link
+            href="/services"
+            className="inline-flex items-center text-primary hover:text-primary-dark transition-colors mb-6"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Back to Services
+          </Link>
+
+          <motion.h1
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-bold text-primary-dark font-heading mb-4"
+          >
+            {service.title}
+          </motion.h1>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="max-w-2xl"
+          >
+            <p className="text-lg text-text-primary mb-6">
+              {service.description}
+            </p>
+          </motion.div>
+        </div>
+        {/* Decorative bottom curve */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 36.7C840 27 960 13 1080 16.7C1200 20 1320 40 1380 50L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* Sub-Services List */}
+      <section className="py-16 bg-white">
+        <div ref={ref} className="container-custom">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-heading inline-block relative pb-3 mb-4">
+              Our Offerings
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              Explore our range of specialized services, each performed with
+              authentic traditions and personalized to meet your specific needs.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {service.subServices.map((subService, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                animate={inView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
+              >
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-semibold mb-3 text-primary-dark">
+                    {subService.title}
+                  </h3>
+                  <p className="text-text-secondary mb-4">
+                    {subService.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mb-4">
+                    <div className="flex items-center">
+                      <Clock size={18} className="text-primary mr-2" />
+                      <span className="text-text-primary">
+                        {subService.duration}
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar size={18} className="text-primary mr-2" />
+                      <span className="text-text-primary">
+                        {subService.price}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <h4 className="font-medium text-text-primary mb-2">
+                      What's Included:
+                    </h4>
+                    <ul className="space-y-2">
+                      {subService.features.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <CheckCircle
+                            size={18}
+                            className="text-primary mr-2 mt-0.5 flex-shrink-0"
+                          />
+                          <span className="text-text-secondary">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-background-light diya-pattern">
+        <div className="container-custom">
+          <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl font-heading font-semibold text-primary-dark mb-4">
+              Interested in {service.title}?
+            </h2>
+            <p className="text-text-secondary mb-8 max-w-2xl mx-auto">
+              Contact Indu Mouli M to discuss your specific requirements and
+              schedule a consultation. Each service is personalized to meet your
+              unique needs.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/contact" className="btn-primary">
+                Contact Now
+              </Link>
+              <a href="tel:+919876543210" className="btn-secondary">
+                Call Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </motion.div>
+  );
+}
