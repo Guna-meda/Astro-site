@@ -23,11 +23,10 @@ const VideoSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-heading text-text-primary relative inline-block pb-3 mb-4 after:content-[''] after:absolute after:w-16 after:h-[3px] after:bg-primary after:bottom-0 after:left-1/2 after:-translate-x-1/2">
-            Watch Our Introduction
+            Take a glimpse
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto font-body">
-            Get to know more about our services and philosophy in this brief
-            introduction video.
+           “of the sacred programs we have conducted across Bangalore, from Kashi to Chennai, and from India to Abu Dhabi.”
           </p>
         </motion.div>
 

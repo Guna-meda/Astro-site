@@ -8,7 +8,7 @@ import { ArrowLeft, CheckCircle, Clock, Calendar } from "lucide-react";
 
 // Mock data for different service types
 const serviceData = {
-  ceremonies: {
+  poojas: {
     title: "Traditional Ceremonies",
     description:
       "Our expertly performed ceremonies honor ancient traditions while creating meaningful experiences for your most important life events.",
@@ -16,57 +16,62 @@ const serviceData = {
       "https://images.pexels.com/photos/9956095/pexels-photo-9956095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     subServices: [
       {
-        title: "Marriage Ceremony",
+        title: "Ceremonies",
         description:
-          "Traditional Hindu wedding ceremonies performed with authentic rituals and mantras.",
-        duration: "4-6 hours",
+          "Traditional Hindu ceremonies performed with authentic rituals and mantras.",
         price: "Customized package",
         features: [
           "Pre-wedding rituals and consultation",
           "Complete Vedic marriage ceremony",
-          "Explanation of each ritual for guests",
-          "Post-wedding blessings",
-          "Marriage certificate",
+          "Engagement Ceremony",
+          "Griha Pravesh (House Warming)",
+          "Naming Ceremony",
+          "Gudli Pooja",
+          "Deity Installation (Vigraha Prathishtapane)",
+          "Thread Ceremony (Upanayana)"
         ],
       },
       {
-        title: "Engagement Ceremony",
+        title: "Homas",
         description:
-          "Auspicious engagement ceremonies to formalize the commitment between couples.",
-        duration: "1-2 hours",
+          "Auspicious fire rituals to invoke divine blessings for various purposes.",
         price: "Customized package",
         features: [
-          "Ring exchange ceremony",
-          "Traditional blessings",
-          "Auspicious muhurta selection",
-          "Family involvement guidance",
+          "Ganapati , Varahi , Rajashyamala Homa",
+          "Navagraha Homa",
+          "Mrutyunjaya Homa , rudra Homa",
+          "Ayushya Homa ",
+          "Sudharshana Homa ",
+          "Shri chakra Homa",
+          "Kushmanda Homa",
+          "Marriage , birthday Homas"
         ],
       },
       {
-        title: "Griha Pravesh (House Warming)",
+        title: "Shanti",
         description:
-          "Sacred house warming ceremonies to invite positive energy into your new home.",
-        duration: "2-3 hours",
+          "Sacred ceremonies to invite positive energy into your new home.",
         price: "Customized package",
         features: [
-          "Vastu evaluation",
-          "Ganesh puja",
-          "Agni sthapana",
-          "Room purification",
-          "Prosperity prayers",
+          "Shashti Poorti Puja (60 yrs)",
+          "Bheema Ratha Shanthi (70 yrs)",
+          "Sahasra Chandra Darshana Shanti(80 yrs)",
+          "Kanakabhishekam",
+          "Mruthyunjaya Shanti",
+          "Udaka Shanti",
         ],
       },
       {
-        title: "Naming Ceremony",
+        title: "Poojas",
         description:
-          "Traditional naming ceremonies for newborns based on astrological calculations.",
-        duration: "1-2 hours",
+          "Traditional poojas on astrological calculations.",
         price: "Customized package",
         features: [
-          "Astrological name selection",
-          "Sacred rituals",
-          "Family blessings",
-          "Certificate",
+          "Ganapathi pooja",
+          "Navagraha pooja",
+          "Mahalakshmi , Lakshmi , Saraswathi pooja",
+          "Shree chakra navavarana",
+          "Satyanarayana pooja",
         ],
       },
     ],
@@ -82,7 +87,6 @@ const serviceData = {
         title: "Complete Birth Chart Analysis",
         description:
           "Comprehensive analysis of your birth chart revealing your life path, strengths, and challenges.",
-        duration: "60-90 minutes",
         price: "Customized package",
         features: [
           "Detailed natal chart preparation",
@@ -96,7 +100,6 @@ const serviceData = {
         title: "Compatibility Analysis",
         description:
           "Detailed marriage compatibility analysis for couples based on Vedic astrological principles.",
-        duration: "45-60 minutes",
         price: "Customized package",
         features: [
           "Ashtakoot matching",
@@ -109,7 +112,6 @@ const serviceData = {
         title: "Career Guidance",
         description:
           "Astrological insights into your career path, opportunities, and best professional directions.",
-        duration: "45-60 minutes",
         price: "Customized package",
         features: [
           "Analysis of 10th house",
@@ -122,7 +124,6 @@ const serviceData = {
         title: "Annual Predictions",
         description:
           "Detailed forecast for the coming year with important dates and transitions.",
-        duration: "60 minutes",
         price: "Customized package",
         features: [
           "Transit analysis",
@@ -134,6 +135,122 @@ const serviceData = {
       },
     ],
   },
+  vastu: {
+    title: "Vastu Consultation",
+    description:
+      "Expert guidance on Vastu Shastra principles to enhance positive energy in your living spaces.",
+    image:
+      "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    subServices: [
+      {
+        title: "Residential Vastu",
+        description:
+          "Personalized Vastu analysis for your home to promote harmony and well-being.",
+        price: "Customized package",
+        features: [
+          "Site analysis",
+          "Room-by-room evaluation",
+          "Remedial suggestions",
+        ],
+      },
+      {
+        title: "Vastu Plans for Construction",
+        description:
+          "Vastu consultation for construction projects to ensure harmony and balance.",
+        price: "Customized package",
+        features: [
+          "Site selection guidance",
+          "Energy flow assessment",
+          "Employee well-being strategies",
+        ],
+      },
+      {
+        title: "Vastu Remedies",
+        description:
+          "Effective remedies and solutions to correct Vastu doshas.",
+        price: "Customized package",
+        features: [
+          "Placement adjustments",
+          "Use of Vastu tools",
+          "Auspicious timings for changes",
+        ],
+      },
+    ],
+  },
+  gems: {
+    title: "Gemstone Consultation",
+    description:
+      "Personalized gemstone recommendations based on your astrological profile.",
+    image:
+      "https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    subServices: [
+      {
+        title: "Birthstone Recommendations",
+        description:
+          "Discover the perfect gemstones to enhance your birth chart.",
+        price: "Customized package",
+        features: [
+          "Analysis of natal chart",
+          "Identification of key planets",
+          "Personalized gemstone suggestions",
+        ],
+      },
+      {
+        title: "Gemstone Energizing Rituals",
+        description:
+          "Rituals to energize and activate the power of your gemstones.",
+        price: "Customized package",
+        features: [
+          "Guided meditation",
+          "Mantra chanting",
+          "Auspicious timings for rituals",
+        ],
+      },
+      {
+        title: "Gemstone Quality Assessment",
+        description:
+          "Expert evaluation of gemstone quality and authenticity.",
+        price: "Customized package",
+        features: [
+          "In-person or video consultation",
+          "Detailed analysis report",
+          "Recommendations for purchase",
+        ],
+      },
+    ],
+  },
+  events: {
+    title: "Birthdays and Marriage Days",
+    description:
+      "Specialized services for celebrating important life events with traditional rituals.",
+    image:
+      "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    subServices: [
+      {
+        title: "Birthday Poojas",
+        description:
+          "Customized rituals and prayers to bless the birthday individual.",
+        price: "Customized package",
+        features: [
+          "Personalized prayer selection",
+          "Homa (fire ritual) arrangements",
+          "Auspicious timing consultation",
+        ],
+      },
+      {
+        title: "Marriage Poojas",
+        description:
+          "Traditional ceremonies and rituals to bless the couple on their wedding day.",
+        price: "Customized package",
+        features: [
+          "Pre-wedding rituals",
+          "Homa (fire ritual) arrangements",
+          "Post-wedding blessings",
+        ],
+      },
+    ],
+  },
+
   // 🔹 Add vastu, poojas, corporate, gems as in your full code
 };
 
@@ -261,12 +378,7 @@ export default function ServiceDetailPage({ params }) {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-4">
-                    <div className="flex items-center">
-                      <Clock size={18} className="text-primary mr-2" />
-                      <span className="text-text-primary">
-                        {subService.duration}
-                      </span>
-                    </div>
+                    
                     <div className="flex items-center">
                       <Calendar size={18} className="text-primary mr-2" />
                       <span className="text-text-primary">
