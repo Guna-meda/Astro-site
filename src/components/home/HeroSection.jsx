@@ -3,46 +3,59 @@ import React from "react";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-24 bg-[#fff9f3] px-4 overflow-hidden">
-      {/* 🔥 Fire Icon in Background */}
-      <img
-        src="/images/fire.png" // keep fire.png inside /public/images/
-        alt="fire-bg"
-        className="absolute top-12 left-1/2 -translate-x-1/2 w-96 opacity-10 pointer-events-none"
-      />
+    <section className="relative flex flex-col items-center justify-center text-center py-16 sm:py-16 md:py-20 px-4 overflow-hidden  bg-gradient-to-br from-orange-50 via-white to-red-50">
 
       {/* Main Heading */}
-      <h1 className="text-5xl font-bold text-red-600 relative z-10">INDU MOULI M</h1>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-red-600 via-red-500 to-orange-600 bg-clip-text text-transparent relative z-10 leading-tight mb-2 drop-shadow-lg">
+        INDU MOULI M
+      </h1>
+
+      {/* Professional Title */}
+      <div className="text-lg sm:text-xl md:text-2xl text-orange-700 font-semibold mb-6 relative z-10 drop-shadow-md">
+        Vedic Scholar & Spiritual Guide
+      </div>
 
       {/* Subtext */}
-      <p className="mt-6 max-w-2xl text-gray-600 relative z-10">
+      <p className="mt-2 max-w-sm sm:max-w-lg md:max-w-2xl text-sm sm:text-base md:text-lg text-gray-800 relative z-10 px-2 leading-relaxed font-medium drop-shadow-sm">
         Bringing ancient wisdom and sacred traditions to guide your life journey
         through authentic Vedic rituals, precise astrological insights, and
         harmonious Vastu principles.
       </p>
 
-      {/* Services List */}
-      <div className="mt-10 flex flex-wrap gap-6 justify-center relative z-10">
-        <div className="px-6 py-3 bg-white shadow-md rounded-xl text-gray-800 font-medium">
-          Purohit
-        </div>
-        <div className="px-6 py-3 bg-white shadow-md rounded-xl text-gray-800 font-medium">
-          Astrologer
-        </div>
-        <div className="px-6 py-3 bg-white shadow-md rounded-xl text-gray-800 font-medium">
-          Vastu Consultant
-        </div>
+      {/* Services Tags - More Subtle */}
+      <div className="mt-8 sm:mt-10 flex flex-wrap gap-2 sm:gap-3 justify-center relative z-10 max-w-md">
+        <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/90 backdrop-blur-sm border-2 border-red-300/50 rounded-full text-red-800 text-xs sm:text-sm font-semibold shadow-lg">
+          Purohit Services
+        </span>
+        <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/90 backdrop-blur-sm border-2 border-yellow-300/50 rounded-full text-orange-800 text-xs sm:text-sm font-semibold shadow-lg">
+          Astrology Readings
+        </span>
+        <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/90 backdrop-blur-sm border-2 border-orange-300/50 rounded-full text-red-800 text-xs sm:text-sm font-semibold shadow-lg">
+          Vastu Consultation
+        </span>
       </div>
 
-      {/* Buttons */}
-      <div className="mt-10 flex gap-4 relative z-10">
-        <button className="px-6 py-3 bg-red-500 text-white rounded-xl shadow hover:bg-red-600">
+      {/* Call-to-Action Buttons */}
+      <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center relative z-10 w-full max-w-md">
+        <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl shadow-xl hover:shadow-2xl hover:from-red-700 hover:to-red-800 transition-all duration-300 text-sm sm:text-base font-bold transform hover:scale-105 border-2 border-red-500/30">
           Explore Services
         </button>
-        <button className="px-6 py-3 bg-yellow-400 text-black rounded-xl shadow hover:bg-yellow-500">
+        <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-xl shadow-xl hover:shadow-2xl hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 text-sm sm:text-base font-bold transform hover:scale-105 border-2 border-yellow-400/30">
           Contact Now
         </button>
       </div>
+
+<div className="mt-8 sm:mt-10 text-xs sm:text-sm text-gray-500 relative z-10">
+        <div className="flex items-center justify-center gap-1">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span>25+ Years Experience</span>
+          <span className="mx-2">•</span>
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span>Trusted by 1000+ Families</span>
+        </div>
+      </div>
+      
+    
     </section>
   );
 }

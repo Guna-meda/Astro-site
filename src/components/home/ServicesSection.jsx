@@ -96,7 +96,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-orange-50 to-white relative">
+    <section id="services" className="py-20  relative">
       <div className="container-custom">
         {/* Section Heading */}
         <motion.div
