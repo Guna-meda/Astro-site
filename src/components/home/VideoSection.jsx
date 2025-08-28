@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Play } from "lucide-react";
@@ -10,6 +10,8 @@ const VideoSection = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [playVideo, setPlayVideo] = useState(false);
 
   return (
     <section className="py-20 bg-background-light bg-temple-pattern">
@@ -26,35 +28,50 @@ const VideoSection = () => {
             Take a glimpse
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto font-body">
-           “of the sacred programs we have conducted across Bangalore, from Kashi to Chennai, and from India to Abu Dhabi.”
+            “of the sacred programs we have conducted across Bangalore, from
+            Kashi to Chennai, and from India to Abu Dhabi.”
           </p>
         </motion.div>
 
-        {/* Video Thumbnail with Play Button */}
+        {/* Video Block */}
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg"
         >
-          <div className="relative w-full h-full group cursor-pointer">
-            {/* Thumbnail image */}
-            <img
-              src="https://images.pexels.com/photos/5977338/pexels-photo-5977338.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-              alt="Introduction Video Thumbnail"
-              className="w-full h-full object-cover"
-            />
+          {!playVideo ? (
+            <div
+              className="relative w-full h-full group cursor-pointer"
+              onClick={() => setPlayVideo(true)}
+            >
+              {/* Thumbnail */}
+              <img
+                src="https://images.pexels.com/photos/5977338/pexels-photo-5977338.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                alt="Introduction Video Thumbnail"
+                className="w-full h-full object-cover"
+              />
 
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
 
-            {/* Play button */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center group-hover:bg-primary-dark transition-colors duration-300 shadow-xl">
-                <Play size={36} className="text-white ml-1" />
+              {/* Play button */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center group-hover:bg-primary-dark transition-colors duration-300 shadow-xl">
+                  <Play size={36} className="text-white ml-1" />
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+          <iframe
+  src="https://www.youtube.com/embed/tgEzKKcyPZU?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0&showinfo=0&loop=1&playlist=tgEzKKcyPZU"
+  title="Pooja Video"
+  className="w-full h-full"
+  allow="autoplay; encrypted-media"
+  allowFullScreen
+></iframe>
+
+          )}
         </motion.div>
       </div>
     </section>

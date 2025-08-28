@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ScrollText, Award, Clock, Users } from "lucide-react";
@@ -49,10 +50,13 @@ const AboutSection = () => {
             className="relative"
           >
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
-              <img
+              <Image
                 src="https://images.pexels.com/photos/6044219/pexels-photo-6044219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
                 alt="Indu Mouli M - Purohit and Astrologer"
+                width={800}
+                height={600}
                 className="w-full h-auto"
+                priority
               />
             </div>
             {/* Decorative Elements */}

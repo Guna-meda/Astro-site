@@ -57,12 +57,7 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
-                <a href="#" className="text-gray-200 hover:text-secondary transition-colors">Testimonials</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-200 hover:text-secondary transition-colors">Blog</a>
-              </li>
+             
             </ul>
           </div>
 
@@ -72,18 +67,18 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-secondary mt-0.5" />
-                <span className="text-gray-200">123 Temple Street, Bangalore, Karnataka, India</span>
+                <span className="text-gray-200">No.33 Sri Sadguru Krupa Nilayam ,BSK 6th Stage, Bangalore, Karnataka, India</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-secondary" />
                 <a href="tel:+919876543210" className="text-gray-200 hover:text-secondary transition-colors">
-                  +91 98765 43210
+                  +91 9448225002
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-secondary" />
                 <a href="mailto:contact@indumoulipurohit.com" className="text-gray-200 hover:text-secondary transition-colors">
-                  contact@indumoulipurohit.com
+                  mouli.indu25@gmail.com
                 </a>
               </li>
             </ul>
