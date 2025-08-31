@@ -11,8 +11,7 @@ const VideoSection = () => {
     threshold: 0.1,
   });
 
-  const [playVideo, setPlayVideo] = useState(false);
-
+const [playVideo, setPlayVideo] = useState(false);
   return (
     <section className="py-20 bg-background-light bg-temple-pattern">
       <div className="max-w-6xl mx-auto px-4">
