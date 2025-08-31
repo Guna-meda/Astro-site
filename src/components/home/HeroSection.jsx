@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import Link from "next/link";
+
 
 export default function HeroSection() {
   return (
@@ -36,22 +38,35 @@ export default function HeroSection() {
       </div>
 
       {/* Call-to-Action Buttons */}
-      <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center relative z-10 w-full max-w-md">
-        <button
-  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 
-             bg-gradient-to-r from-red-500 via-red-600 to-red-700 
-             text-white rounded-xl shadow-xl 
-             hover:from-red-600 hover:via-red-700 hover:to-red-800 
-             transition-all duration-300 text-sm sm:text-base font-bold 
-             transform hover:scale-105 border-2 border-red-500/30"
->
-  Explore Services
-</button>
+     <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center relative z-10 w-full max-w-md">
+  
+  <Link href="/services" passHref>
+    <button
+      className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 
+                 bg-gradient-to-r from-red-500 via-red-600 to-red-700 
+                 text-white rounded-xl shadow-xl 
+                 hover:from-red-600 hover:via-red-700 hover:to-red-800 
+                 transition-all duration-300 text-sm sm:text-base font-bold 
+                 transform hover:scale-105 border-2 border-red-500/30"
+    >
+      Explore Services
+    </button>
+  </Link>
 
-        <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-xl shadow-xl hover:shadow-2xl hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 text-sm sm:text-base font-bold transform hover:scale-105 border-2 border-yellow-400/30">
-          Contact Now
-        </button>
-      </div>
+  <Link href="/contact" passHref>
+    <button
+      className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 
+                 bg-gradient-to-r from-yellow-500 to-orange-500 
+                 text-white rounded-xl shadow-xl 
+                 hover:shadow-2xl hover:from-yellow-600 hover:to-orange-600 
+                 transition-all duration-300 text-sm sm:text-base font-bold 
+                 transform hover:scale-105 border-2 border-yellow-400/30"
+    >
+      Contact Now
+    </button>
+  </Link>
+
+</div>
 
 <div className="mt-8 sm:mt-10 text-xs sm:text-sm text-gray-500 relative z-10">
         <div className="flex items-center justify-center gap-1">

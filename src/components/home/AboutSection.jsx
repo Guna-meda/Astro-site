@@ -51,7 +51,7 @@ const AboutSection = () => {
           >
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="https://images.pexels.com/photos/6044219/pexels-photo-6044219.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                src="/images/Main.jpg"
                 alt="Indu Mouli M - Purohit and Astrologer"
                 width={800}
                 height={600}
@@ -74,20 +74,19 @@ const AboutSection = () => {
               About Indu Mouli
             </h2>
             <p className="text-text-secondary mb-4">
-              With over 15 years of experience as a Purohit, Astrologer, and
-              Vastu consultant, Indu Mouli M has been dedicated to preserving
+              With over 35 years of experience as a Purohit, Astrologer, and
+              Vastu consultant, dedicated to preserving
               and sharing the sacred traditions of Hindu rituals and Vedic
               sciences.
             </p>
             <p className="text-text-secondary mb-4">
               Through authentic and meticulously performed rituals, accurate
-              astrological readings, and harmonious Vastu consultations, Indu
-              Mouli has helped thousands of families and individuals navigate
+              astrological readings, and harmonious Vastu consultations, we have helped thousands of families and individuals navigate
               life's challenges and celebrate its most significant moments.
             </p>
             <p className="text-text-secondary mb-6">
               Trained in the traditional Gurukul system under the guidance of
-              renowned masters, Indu Mouli combines deep knowledge of ancient
+              renowned masters, we combine deep knowledge of ancient
               texts with a modern approach to address contemporary concerns.
             </p>
 
@@ -100,25 +99,7 @@ const AboutSection = () => {
               </a>
             </div>
 
-            {/* Credentials / Achievements */}
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-3">
-                  <ScrollText size={20} className="text-primary" />
-                </div>
-                <span className="text-text-primary font-medium">
-                  Certified Vedic Scholar
-                </span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-3">
-                  <Award size={20} className="text-primary" />
-                </div>
-                <span className="text-text-primary font-medium">
-                  Award-Winning Astrologer
-                </span>
-              </div>
-            </div>
+            
           </motion.div>
         </div>
 
@@ -131,7 +112,7 @@ const AboutSection = () => {
             <>
               <Stat
                 icon={<Clock size={32} />}
-                number="15+"
+                number="35+"
                 label="Years Experience"
                 delay={0.1}
               />
@@ -143,16 +124,11 @@ const AboutSection = () => {
               />
               <Stat
                 icon={<ScrollText size={32} />}
-                number="1000+"
+                number="Countless"
                 label="Ceremonies Performed"
                 delay={0.3}
               />
-              <Stat
-                icon={<Award size={32} />}
-                number="25+"
-                label="Awards & Recognition"
-                delay={0.4}
-              />
+             
             </>
           )}
         </div>

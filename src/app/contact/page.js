@@ -7,7 +7,8 @@ import {
   Mail,
   MapPin,
   Clock,
-  Star
+  Star,
+  Calendar
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -29,9 +30,9 @@ export default function ContactPage() {
   // FAQ data
   const faqs = [
     {
-      question: "How far in advance should I book for a ceremony?",
+      question: "At what time can we contact you?",
       answer:
-        "For important ceremonies like weddings, we recommend booking at least 2-3 months in advance. For other ceremonies, 2-4 weeks notice is generally sufficient, though this can vary during busy seasons.",
+      "You can contact us anytime , we will respond as soon as possible."
     },
     {
       question: "Do you perform ceremonies outside your city?",
@@ -51,7 +52,7 @@ export default function ContactPage() {
     {
       question: "Do you offer online consultations?",
       answer:
-        "Yes, we offer video consultations for both astrological readings and Vastu consultations for clients who cannot visit in person.",
+        "Yes, we offer call consultations for both astrological readings and Vastu consultations for clients who cannot visit in person.",
     },
   ];
 
@@ -62,309 +63,160 @@ export default function ContactPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Banner */}
-      <section className="relative py-20 bg-background-light temple-pattern">
-        <div className="container-custom text-center py-16">
-          <motion.h1
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-primary-dark font-heading mb-4"
-          >
-            Contact Us
-          </motion.h1>
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-2xl mx-auto"
-          >
-            <p className="text-lg text-text-secondary mb-6">
-              Reach out to us to schedule a consultation or to inquire about our
-              services. We're here to help you with all your spiritual needs.
-            </p>
-          </motion.div>
-        </div>
-        {/* Decorative bottom curve */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 120"
-            fill="none"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 36.7C840 27 960 13 1080 16.7C1200 20 1320 40 1380 50L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
+     {/* Hero Banner */}
+<section className="relative py-20 bg-background-light temple-pattern">
+  <div className="container-custom text-center py-16">
+    <motion.h1
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-4xl md:text-5xl font-bold text-primary-dark font-heading mb-4"
+    >
+      Contact Us
+    </motion.h1>
+
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="max-w-2xl mx-auto"
+    >
+      <p className="text-lg text-text-secondary mb-6">
+        Reach out to us to schedule a consultation or to inquire about our
+        services. We're here to help you with all your spiritual needs.
+      </p>
+    </motion.div>
+  </div>
+
+</section>
+
 
       {/* Contact Section */}
-      <section className="py-16 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Contact Form */}
-            <motion.div
-              ref={formRef}
-              initial={{ x: -50, opacity: 0 }}
-              animate={
-                formInView
-                  ? { x: 0, opacity: 1 }
-                  : { x: -50, opacity: 0 }
-              }
-              transition={{ duration: 0.6 }}
-            >
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-semibold text-primary-dark font-heading mb-6">
-                  Send a Message
-                </h2>
+<section className="py-16 relative">
+  <div className="container-custom">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
 
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-text-primary mb-2 font-medium"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="input-field"
-                        placeholder="Enter your name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-text-primary mb-2 font-medium"
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="input-field"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                  </div>
+      {/* Contact Info Card */}
+      <motion.div
+        ref={infoRef}
+        initial={{ x: 50, opacity: 0 }}
+        animate={infoInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 h-full border border-primary/10 flex flex-col">
+          <h3 className="font-heading text-3xl font-bold mb-8 text-primary-dark">
+            Get in Touch
+          </h3>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-text-primary mb-2 font-medium"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        className="input-field"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="service"
-                        className="block text-text-primary mb-2 font-medium"
-                      >
-                        Service of Interest
-                      </label>
-                      <select id="service" className="input-field">
-                        <option value="">Select a service</option>
-                        <option value="ceremonies">Ceremonies</option>
-                        <option value="astrology">
-                          Astrological Consultation
-                        </option>
-                        <option value="vastu">Vastu Consultation</option>
-                        <option value="poojas">Poojas & Homams</option>
-                        <option value="corporate">Corporate Events</option>
-                        <option value="gems">Gem Recommendations</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-text-primary mb-2 font-medium"
-                    >
-                      Your Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows="5"
-                      className="input-field"
-                      placeholder="Tell us about your requirements..."
-                    ></textarea>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="preferred-date"
-                      className="block text-text-primary mb-2 font-medium"
-                    >
-                      Preferred Date (if applicable)
-                    </label>
-                    <input type="date" id="preferred-date" className="input-field" />
-                  </div>
-
-                  <div className="flex items-start">
-                    <input type="checkbox" id="terms" className="mt-1 mr-2" />
-                    <label
-                      htmlFor="terms"
-                      className="text-text-secondary text-sm"
-                    >
-                      I agree to the privacy policy and consent to being
-                      contacted regarding my inquiry.
-                    </label>
-                  </div>
-
-                  <button type="submit" className="btn-primary w-full">
-                    Send Message
-                  </button>
-                </form>
+          <div className="space-y-8 flex-grow">
+            {/* Phone / WhatsApp */}
+            <div className="flex items-start">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mr-4 shrink-0 shadow-sm">
+                <Phone size={22} className="text-primary-dark" />
               </div>
-            </motion.div>
-
-            {/* Contact Information */}
-            <motion.div
-              ref={infoRef}
-              initial={{ x: 50, opacity: 0 }}
-              animate={
-                infoInView
-                  ? { x: 0, opacity: 1 }
-                  : { x: 50, opacity: 0 }
-              }
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="bg-white rounded-lg shadow-lg p-8 h-full">
-                <h2 className="text-2xl font-semibold text-primary-dark font-heading mb-6">
-                  Contact Information
-                </h2>
-
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-4 shrink-0">
-                      <Phone size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-1">
-                        Phone
-                      </h3>
-                      <a
-                        href="tel:+919876543210"
-                        className="text-text-secondary hover:text-primary transition-colors block"
-                      >
-                        +91 98765 43210
-                      </a>
-                      <a
-                        href="tel:+919876543211"
-                        className="text-text-secondary hover:text-primary transition-colors block"
-                      >
-                        +91 98765 43211
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-4 shrink-0">
-                      <Mail size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-1">
-                        Email
-                      </h3>
-                      <a
-                        href="mailto:contact@indumoulipurohit.com"
-                        className="text-text-secondary hover:text-primary transition-colors block"
-                      >
-                        contact@indumoulipurohit.com
-                      </a>
-                      <a
-                        href="mailto:bookings@indumoulipurohit.com"
-                        className="text-text-secondary hover:text-primary transition-colors block"
-                      >
-                        bookings@indumoulipurohit.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-4 shrink-0">
-                      <MapPin size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-1">
-                        Address
-                      </h3>
-                      <p className="text-text-secondary">
-                        123 Temple Street, Jayanagar,
-                        <br />
-                        Bangalore, Karnataka - 560041,
-                        <br />
-                        India
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-light bg-opacity-20 rounded-full flex items-center justify-center mr-4 shrink-0">
-                      <Clock size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-1">
-                        Business Hours
-                      </h3>
-                      <p className="text-text-secondary">
-                        Monday - Saturday: 9:00 AM to 7:00 PM
-                        <br />
-                        Sunday: 10:00 AM to 2:00 PM
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Call to action */}
-                <div className="bg-primary-light bg-opacity-10 rounded-lg p-6 mt-6">
-                  <h3 className="text-lg font-medium text-primary-dark mb-3 font-heading">
-                    Quick Bookings
-                  </h3>
-                  <p className="text-text-secondary mb-4">
-                    Need to schedule a service urgently? Call us directly for
-                    immediate assistance.
-                  </p>
-                  <a
-                    href="tel:+919876543210"
-                    className="btn-primary w-full block text-center"
-                  >
-                    Call Now
-                  </a>
-                </div>
+              <div>
+                <h4 className="text-lg font-semibold text-text-primary mb-1">
+                  Phone / WhatsApp
+                </h4>
+                <a
+                  href="tel:+919448225002"
+                  className="text-text-secondary hover:text-primary transition-colors block"
+                >
+                  +91 9448225002
+                </a>
+                <a
+                  href="https://wa.me/919448225002"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium hover:underline"
+                >
+                  Chat on WhatsApp
+                </a>
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Map Section - Placeholder */}
-      <section className="py-8 bg-white">
-        <div className="container-custom">
-          <div className="bg-gray-200 h-80 rounded-lg overflow-hidden">
-            {/* Replace with Google Maps embed */}
-            <div className="w-full h-full flex items-center justify-center">
-              <p className="text-text-secondary">Map would be embedded here</p>
+            {/* Location */}
+            <div className="flex items-start">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mr-4 shrink-0 shadow-sm">
+                <MapPin size={22} className="text-primary-dark" />
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-text-primary mb-1">
+                  Location
+                </h4>
+                <p className="text-text-secondary mb-1">
+                  No.33, Sadguru Krupa Jyotishyalayam
+                  <br />
+                  BSK 6th stage, Bangalore, Karnataka, India
+                </p>
+                <a
+                   href="https://maps.app.goo.gl/aNTSdtKcFRUctY8J8"
+
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium hover:underline"
+                >
+                  📍 View on Google Maps
+                </a>
+              </div>
+            </div>
+
+            {/* Business Hours */}
+            <div className="flex items-start">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-full flex items-center justify-center mr-4 shrink-0 shadow-sm">
+                <Calendar size={22} className="text-primary-dark" />
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-text-primary mb-1">
+                  Business Hours
+                </h4>
+                <p className="text-text-secondary">
+                  Mon – Sun
+                  <br />
+                  Contact for details
+                </p>
+              </div>
             </div>
           </div>
+
+          {/* CTA Buttons */}
+          <div className="mt-10">
+  <a
+    href="tel:+919448225002"
+    className="block w-full bg-red-500 hover:bg-red-600 
+               text-white font-semibold py-3 px-6 rounded-xl 
+               text-center shadow-md transition-all duration-300"
+  >
+    📞 Call Now
+  </a>
+</div>
+
         </div>
-      </section>
+      </motion.div>
+
+      {/* Google Map */}
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        animate={infoInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <div className="rounded-2xl overflow-hidden shadow-lg border border-primary/10 h-[450px] w-full">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.4179230565946!2d77.53368317484394!3d12.88082671686243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f4da4e0531f%3A0x6ff3cbc302e16c5d!2sSadguru%20Krupa%20Jyotishyalayam%20-%20Best%20Purohit%2C%20Astrologer%20and%20Vaastu%20Consultant%20in%20Bangalore!5e0!3m2!1sen!2sin!4v1756616863314!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+ 
 
       {/* FAQs Section */}
       <section className="py-16 bg-background-light diya-pattern">
@@ -445,49 +297,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 bg-white">
-        <div className="container-custom">
-          <h2 className="section-heading inline-block relative pb-3 mb-8 text-center">
-            Client Testimonials
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((_, index) => (
-              <div
-                key={index}
-                className="bg-background-light rounded-lg p-6 shadow-md"
-              >
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={18}
-                      className="text-secondary fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-text-secondary mb-4 italic">
-                  "Indu Mouli conducted our daughter's naming ceremony with such
-                  precision and care. The explanation of each ritual made it
-                  meaningful for everyone present."
-                </p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-primary-light rounded-full mr-3"></div>
-                  <div>
-                    <h4 className="font-medium text-text-primary">
-                      Priya & Rahul
-                    </h4>
-                    <p className="text-sm text-text-secondary">
-                      Naming Ceremony
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
     </motion.div>
   );
 }

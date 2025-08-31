@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Play } from "lucide-react";
+import { Volume2, VolumeX } from "lucide-react";
 
 const VideoSection = () => {
   const { ref, inView } = useInView({
@@ -11,7 +11,43 @@ const VideoSection = () => {
     threshold: 0.1,
   });
 
-const [playVideo, setPlayVideo] = useState(false);
+  const playerRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    // Load YouTube Iframe API if not already loaded
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      window.document.body.appendChild(tag);
+    } else {
+      onYouTubeIframeAPIReady();
+    }
+
+    // Expose function globally for YT API
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player("yt-player", {
+        events: {
+          onReady: (event) => {
+            event.target.mute();
+            event.target.playVideo();
+          },
+        },
+      });
+    };
+  }, []);
+
+  const toggleMute = () => {
+    if (!playerRef.current) return;
+    if (isMuted) {
+      playerRef.current.unMute();
+      setIsMuted(false);
+    } else {
+      playerRef.current.mute();
+      setIsMuted(true);
+    }
+  };
+
   return (
     <section className="py-20 bg-background-light bg-temple-pattern">
       <div className="max-w-6xl mx-auto px-4">
@@ -39,38 +75,22 @@ const [playVideo, setPlayVideo] = useState(false);
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg"
         >
-          {!playVideo ? (
-            <div
-              className="relative w-full h-full group cursor-pointer"
-              onClick={() => setPlayVideo(true)}
-            >
-              {/* Thumbnail */}
-              <img
-                src="https://images.pexels.com/photos/5977338/pexels-photo-5977338.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                alt="Introduction Video Thumbnail"
-                className="w-full h-full object-cover"
-              />
-
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
-
-              {/* Play button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center group-hover:bg-primary-dark transition-colors duration-300 shadow-xl">
-                  <Play size={36} className="text-white ml-1" />
-                </div>
-              </div>
-            </div>
-          ) : (
+          {/* YouTube Iframe */}
           <iframe
-  src="https://www.youtube.com/embed/tgEzKKcyPZU?autoplay=1&mute=1&rel=0&modestbranding=1&controls=0&showinfo=0&loop=1&playlist=tgEzKKcyPZU"
-  title="Pooja Video"
-  className="w-full h-full"
-  allow="autoplay; encrypted-media"
-  allowFullScreen
-></iframe>
+            id="yt-player"
+            src="https://www.youtube.com/embed/tgEzKKcyPZU?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tgEzKKcyPZU&controls=0&rel=0&modestbranding=1"
+            title="Pooja Video"
+            className="w-full h-full"
+            allow="autoplay; fullscreen; encrypted-media"
+          ></iframe>
 
-          )}
+          {/* Sound Toggle Button */}
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-3 right-3 bg-black/60 text-white p-2 rounded-full hover:bg-black/80 transition"
+          >
+            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </button>
         </motion.div>
       </div>
     </section>
