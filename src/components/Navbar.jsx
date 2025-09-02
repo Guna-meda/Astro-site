@@ -63,7 +63,9 @@ export default function Navbar({ isScrolled }) {
               {label}
             </Link>
           ))}
-          <button className="btn-primary ml-4">Book Now</button>
+          <Link href="/contact" className="ml-4">
+            <button className="btn-primary ml-4">Book Now</button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}

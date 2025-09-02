@@ -23,11 +23,11 @@ export const metadata = {
     title: "Indu Mouli | Astrology, Vastu & Purohit Services",
     description:
       "Astrology, Vastu, and traditional Pooja services by Indu Mouli in Bangalore. Trusted purohit with years of experience.",
-    url: "https://yourdomain.com", //changeeee this
+    url: "https://yourdomain.com", // change this to your real domain
     siteName: "Indu Mouli",
     images: [
       {
-        url: "/images/Main.jpg", 
+        url: "/images/Main.jpg",
         width: 1200,
         height: 630,
         alt: "Astrology & Vastu by Indu Mouli",
@@ -37,6 +37,12 @@ export const metadata = {
     type: "website",
   },
 
+  // Favicon / App Icons
+  icons: {
+    icon: "/images/Mandala.png", // main favicon
+    shortcut: "/images/Mandala.png",
+    apple: "/images/Mandala.png", // for iOS "Add to Home Screen"
+  },
 };
 
 export default function RootLayout({ children }) {
