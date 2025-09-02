@@ -31,11 +31,7 @@ const AboutSection = () => {
   });
 
   const statsRef = useRef(null);
-  const [statsInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: "-100px 0px",
-  });
+ <div> hi bro y</div>
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -103,35 +99,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
 
-        {/* Stats Section */}
-        <div
-          ref={statsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 py-10 border-t border-b border-gray-100"
-        >
-          {statsInView && (
-            <>
-              <Stat
-                icon={<Clock size={32} />}
-                number="35+"
-                label="Years Experience"
-                delay={0.1}
-              />
-              <Stat
-                icon={<Users size={32} />}
-                number="5000+"
-                label="Satisfied Clients"
-                delay={0.2}
-              />
-              <Stat
-                icon={<ScrollText size={32} />}
-                number="Countless"
-                label="Ceremonies Performed"
-                delay={0.3}
-              />
-             
-            </>
-          )}
-        </div>
+        
       </div>
     </section>
   );

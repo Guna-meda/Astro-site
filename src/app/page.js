@@ -2,9 +2,11 @@
 
 import AboutSection from "@/components/home/AboutSection";
 import ContactSection from "@/components/home/ContactSection";
+import GallerySection from "@/components/home/GallerySection";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import VideoSection from "@/components/home/VideoSection";
+import YouTubeChannelSection from "@/components/home/YouTubeChannelSection";
 import { motion } from "framer-motion";
 
 
@@ -19,7 +21,9 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <VideoSection />
+      <GallerySection />
       <AboutSection />
+      <YouTubeChannelSection />
       <ContactSection />
     </motion.div>
   );

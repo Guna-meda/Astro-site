@@ -21,13 +21,11 @@ export default function Footer() {
               astrology, and Vastu Shastra to bring peace, prosperity, and spiritual alignment.
             </p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-white hover:text-secondary transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-secondary transition-colors">
+             
+              <a href="https://www.instagram.com/puro.hit1975/" className="text-white hover:text-secondary transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white hover:text-secondary transition-colors">
+              <a href="http://www.youtube.com/@srisadgurukrupajyothishyal7855" className="text-white hover:text-secondary transition-colors">
                 <Youtube size={20} />
               </a>
             </div>
