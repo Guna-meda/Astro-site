@@ -106,31 +106,32 @@ export default function ServicesPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Banner */}
-      <section className="relative py-24 pt-8 bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-50 overflow-hidden">
-        <div className="container-custom text-center relative z-10">
-          <motion.h1
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-red-600 font-heading mb-4"
-          >
-            Our Services
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl mx-auto text-gray-700 text-lg"
-          >
-            Discover our range of traditional services designed to bring
-            balance, prosperity, and spiritual well-being to your life.
-          </motion.p>
-        </div>
-      </section>
+    {/* Hero Banner */}
+<section className="relative py-12 mt-6 bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-50 overflow-hidden">
+  <div className="container mx-auto text-center py-16 px-4">
+    <motion.h1
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-4xl md:text-5xl font-bold text-red-600 font-heading mb-4"
+    >
+      Our Services
+    </motion.h1>
+    <motion.p
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="text-lg text-gray-600 max-w-2xl mx-auto"
+    >
+      Discover our range of traditional services designed to bring balance,
+      prosperity, and spiritual well-being to your life.
+    </motion.p>
+  </div>
+</section>
+
 
       {/* Services Grid */}
-      <section className="py-20 bg-gradient-to-b from-orange-50 to-white relative">
+      <section className="py-20 relative">
         <div className="container-custom">
          
 
