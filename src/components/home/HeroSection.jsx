@@ -71,7 +71,7 @@ export default function HeroSection() {
 <div className="mt-8 sm:mt-10 text-xs sm:text-sm text-gray-500 relative z-10">
         <div className="flex items-center justify-center gap-1">
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-          <span>25+ Years Experience</span>
+          <span>35+ Years Experience</span>
           <span className="mx-2">•</span>
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
           <span>Trusted by 1000+ Families</span>

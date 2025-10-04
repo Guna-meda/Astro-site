@@ -47,12 +47,12 @@ export default function ContactPage() {
     {
       question: "How long does an astrological consultation usually take?",
       answer:
-        "A typical astrological consultation takes between 45-90 minutes depending on the complexity of the questions and the depth of analysis required.",
+        "A typical astrological consultation depends on the complexity of the questions and the depth of analysis required.",
     },
     {
       question: "Do you offer online consultations?",
       answer:
-        "Yes, we offer call consultations for both astrological readings and Vastu consultations for clients who cannot visit in person.",
+        "Yes, we offer call consultations for astrological readings for clients who cannot visit in person.",
     },
   ];
 
@@ -125,12 +125,27 @@ export default function ContactPage() {
                   +91 9448225002
                 </a>
                 <a
+                  href="tel:+918618280659"
+                  className="text-text-secondary hover:text-primary transition-colors block"
+                >
+                  +91 8618280659
+                </a>
+                <a
                   href="https://wa.me/919448225002"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary font-medium hover:underline"
                 >
-                  Chat on WhatsApp
+                  Chat on WhatsApp (9448225002)
+                </a>
+                <br/>
+                <a
+                  href="https://wa.me/918618280659"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium hover:underline"
+                >
+                  Chat on WhatsApp (8618280659)
                 </a>
               </div>
             </div>
@@ -145,7 +160,7 @@ export default function ContactPage() {
                   Location
                 </h4>
                 <p className="text-text-secondary mb-1">
-                  No.33, Sadguru Krupa Jyotishyalayam
+                  No.33, Sri Sadguru Krupa Jyotishyalayam
                   <br />
                   BSK 6th stage, Bangalore, Karnataka, India
                 </p>
@@ -282,18 +297,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={faqInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-center mt-12"
-          >
-            <p className="text-text-secondary mb-6">
-              Don't see your question here? Contact us directly and we'll be
-              happy to help.
-            </p>
-            <button className="btn-primary">Ask a Question</button>
-          </motion.div>
+        
         </div>
       </section>
 

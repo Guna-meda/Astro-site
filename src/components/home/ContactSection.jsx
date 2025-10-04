@@ -59,11 +59,25 @@ const ContactSection = () => {
                       +91 9448225002
                     </a>
                     <a
+                      href="tel:+918618280659"
+                      className="text-text-secondary hover:text-primary transition-colors block"
+                    >
+                      +91 8618280659
+                    </a>
+                    <a
                       href="https://wa.me/919448225002"
                       target="_blank"
                       className="text-primary font-medium hover:underline"
                     >
-                      Chat on WhatsApp
+                      Chat on WhatsApp (9448225002)
+                    </a>
+                    <br/>
+                    <a
+                      href="https://wa.me/918618280659"
+                      target="_blank"
+                      className="text-primary font-medium hover:underline"
+                    >
+                      Chat on WhatsApp (8618280659)
                     </a>
                   </div>
                 </div>
@@ -114,10 +128,16 @@ Contact for more details.
 
               <div className="mt-10">
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919448225002"
                   className="btn-secondary w-full py-3 text-lg rounded-xl text-center block"
                 >
                   📞 Call Now
+                </a>
+                <a
+                  href="tel:+918618280659"
+                  className="btn-secondary w-full py-3 text-lg rounded-xl text-center block mt-2"
+                >
+                  📞 Call Alternate
                 </a>
               </div>
             </div>

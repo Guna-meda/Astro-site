@@ -109,28 +109,29 @@ const serviceData = {
         ],
       },
       {
-        title: "Career Guidance",
+        title: "Question Horoscope",
         description:
-          "Astrological insights into your career path, opportunities, and best professional directions.",
+          "Detailed answers to specific life questions through horary astrology and prashna kundali.",
         price: "Customized package",
         features: [
-          "Analysis of 10th house",
-          "Planetary influences on career",
-          "Timing of opportunities",
-          "Strengths and challenges",
+          "Prashna Kundali analysis",
+          "Specific question resolution",
+          "Timing-based predictions",
+          "Remedial solutions",
+          "Immediate guidance",
         ],
       },
       {
-        title: "Annual Predictions",
+        title: "Jataka/Horoscope Writing",
         description:
-          "Detailed forecast for the coming year with important dates and transitions.",
+          "Comprehensive horoscope writing services in both traditional handwritten and computerized formats.",
         price: "Customized package",
         features: [
-          "Transit analysis",
-          "Dasha predictions",
-          "Monthly breakdown",
-          "Remedial measures",
-          "Important dates",
+          "Traditional handwritten horoscope",
+          "Computerized detailed report",
+          "Planetary positions and calculations",
+          "Dasha periods timeline",
+          "Lifetime predictions overview",
         ],
       },
     ],
@@ -206,52 +207,71 @@ const serviceData = {
           "Auspicious timings for rituals",
         ],
       },
-      {
-        title: "Gemstone Quality Assessment",
-        description:
-          "Expert evaluation of gemstone quality and authenticity.",
-        price: "Customized package",
-        features: [
-          "In-person or video consultation",
-          "Detailed analysis report",
-          "Recommendations for purchase",
-        ],
-      },
     ],
   },
   events: {
-    title: "Birthdays and Marriage Days",
-    description:
-      "Specialized services for celebrating important life events with traditional rituals.",
-    image:
-      "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "title": "Birthday Celebrations",
+  "description": "Specialized services for celebrating birthdays with traditional rituals and homas.",
+  "image": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "subServices": [
+    {
+      "title": "Birthday Poojas",
+      "description": "Customized rituals and prayers to bless the birthday individual.",
+      "price": "Customized package",
+      "features": [
+        "Ayushya Homa",
+        "Gana Homa",
+        "Ganesha Homa",
+        "Mrutyunjaya Homa",
+        "Personalized prayer selection",
+        "Auspicious timing consultation"
+      ]
+    }
+  ]
+  },
+  yantras: {
+    title: "Yantras",
+    description: "Sacred geometric instruments for spiritual energy and divine blessings.",
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     subServices: [
       {
-        title: "Birthday Poojas",
-        description:
-          "Customized rituals and prayers to bless the birthday individual.",
-        price: "Customized package",
-        features: [
-          "Personalized prayer selection",
-          "Homa (fire ritual) arrangements",
-          "Auspicious timing consultation",
-        ],
+        "title": "Sudarshana Yantra",
+        "description": "Divine weapon yantra for protection and removing obstacles.",
+        "price": "Customized package",
+        "features": [
+         "Consult for more information."
+        ]
       },
       {
-        title: "Marriage Poojas",
-        description:
-          "Traditional ceremonies and rituals to bless the couple on their wedding day.",
-        price: "Customized package",
-        features: [
-          "Pre-wedding rituals",
-          "Homa (fire ritual) arrangements",
-          "Post-wedding blessings",
-        ],
-      },
-    ],
-  },
+        "title": "Matsya Yantra",
+        "description": "Ancient yantra for prosperity and abundance.",
+        "price": "Customized package",
+        "features": [
+                 "Consult for more information."
 
-  // 🔹 Add vastu, poojas, corporate, gems as in your full code
+        ]
+      },
+      {
+        "title": "Vastu Yantra",
+        "description": "Harmonizing yantra for balancing home and workplace energies.",
+        "price": "Customized package",
+        "features": [
+                   "Consult for more information."
+
+        ]
+      },
+      {
+        "title": "Shrichakra Yantra",
+        "description": "Supreme yantra for spiritual evolution and cosmic consciousness.",
+        "price": "Customized package",
+        "features": [
+                "Consult for more information."
+
+        ]
+      }
+    ]
+  }
+
 };
 
 export default function ServiceDetailPage({ params }) {
@@ -423,8 +443,11 @@ export default function ServiceDetailPage({ params }) {
               <Link href="/contact" className="btn-primary">
                 Contact Now
               </Link>
-              <a href="tel:+919876543210" className="btn-secondary">
+              <a href="tel:+919448225002" className="btn-secondary">
                 Call Us
+              </a>
+              <a href="tel:+918618280659" className="btn-secondary">
+                Call Alternate
               </a>
             </div>
           </div>

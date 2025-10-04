@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { Flame, Star, Home, Gem, Calendar } from "lucide-react";
+import { Flame, Star, Home, Gem, Calendar, TrendingUp } from "lucide-react";
 
 function ServiceCard({ icon, title, description, link, index }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -54,7 +54,7 @@ function ServiceCard({ icon, title, description, link, index }) {
 export default function ServicesPage() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const services = [
+ const services = [
     {
       icon: <Flame size={36} />,
       title: "Poojas & Homams",
@@ -89,6 +89,13 @@ export default function ServicesPage() {
       description:
         "Specialized services for celebrating important life events with traditional rituals.",
       link: "/services/events",
+    },
+    {
+      icon: <TrendingUp size={36} />, // You can change this icon as needed
+      title: "Yantras",
+      description:
+        "Sacred geometric instruments for spiritual energy and divine blessings.",
+      link: "/services/yantras",
     }
   ];
 
@@ -100,7 +107,7 @@ export default function ServicesPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Banner */}
-      <section className="relative py-24 bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-50 overflow-hidden">
+      <section className="relative py-24 pt-8 bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-50 overflow-hidden">
         <div className="container-custom text-center relative z-10">
           <motion.h1
             initial={{ y: -20, opacity: 0 }}
@@ -154,10 +161,16 @@ export default function ServicesPage() {
               Contact Now
             </Link>
             <a
-              href="tel:+919876543210"
+              href="tel:+919448225002"
               className="px-6 py-3 rounded-xl border-2 border-white text-white font-semibold hover:bg-white hover:text-orange-600 transition"
             >
               Call Us
+            </a>
+            <a
+              href="tel:+918618280659"
+              className="px-6 py-3 rounded-xl border-2 border-white text-white font-semibold hover:bg-white hover:text-orange-600 transition"
+            >
+              Call Alternate
             </a>
           </div>
         </div>

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Masonry from "react-masonry-css";
-import { X, Play, Hash } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const GallerySection = () => {
@@ -16,52 +16,52 @@ const GallerySection = () => {
 
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   // Sample gallery items with tags
   const galleryItems = [
     {
       id: 1,
       src: "/images/Gallary/For website/IMG_3585.JPG",
-      alt: "Ganapathi Homam Ceremony",
-      tags: ["pooja", "homam"],
+      tags: [],
       type: "image"
     },
     {
       id: 2,
       src: "/images/Gallary/For website/IMG_4552.JPG",
-      alt: "Astrology Consultation",
-      tags: ["consultation"],
+      tags: [],
       type: "image"
     },
     {
       id: 3,
       src: "/images/Gallary/For website/IMG_4557.JPG",
-      alt: "Vastu Consultation",
-      tags: ["vastu"],
+      tags: [],
       type: "image"
     },
     {
       id: 4,
       src: "/images/Gallary/For website/IMG_4596.JPG",
-      alt: "Wedding Ceremony",
-      tags: ["wedding", "ceremony"],
+      tags: [],
       type: "image"
     },
     {
       id: 5,
       src: "/images/Gallary/For website/IMG_4598.JPG",
-      alt: "Satyanarayana Pooja",
-      tags: ["pooja"],
+      tags: [],
       type: "image"
     },
     {
       id: 6,
       src: "/images/Gallary/For website/IMG_4622.JPG",
-      alt: "Office Vastu",
-      tags: ["vastu", "office"],
+      tags: [],
       type: "image"
     },
   ];
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Collect all unique tags from galleryItems
   const allTags = [...new Set(galleryItems.flatMap((item) => item.tags))];
@@ -89,14 +89,70 @@ const GallerySection = () => {
   };
 
   const openLightbox = (item) => {
+    const index = filteredItems.findIndex(i => i.id === item.id);
+    setCurrentIndex(index);
     setSelectedItem(item);
     document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setSelectedItem(null);
+    setCurrentIndex(0);
     document.body.style.overflow = "auto";
   };
+
+  const goToNext = () => {
+    const nextIndex = (currentIndex + 1) % filteredItems.length;
+    setCurrentIndex(nextIndex);
+    setSelectedItem(filteredItems[nextIndex]);
+  };
+
+  const goToPrev = () => {
+    const prevIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
+    setCurrentIndex(prevIndex);
+    setSelectedItem(filteredItems[prevIndex]);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!selectedItem) return;
+      
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        goToNext();
+      } else if (e.key === 'ArrowLeft') {
+        goToPrev();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedItem, currentIndex, filteredItems]);
+
+  // Prevent hydration issues by not rendering until client-side
+  if (!isClient) {
+    return (
+      <section id="gallery" className="py-20 bg-gradient-to-b from-orange-50 to-white relative overflow-hidden">
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="section-heading inline-block relative pb-3 mb-4">
+              Sacred Moments Gallery
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              A visual journey through the divine ceremonies and rituals we've been blessed to perform
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="bg-gray-200 rounded-xl h-64 animate-pulse"></div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="gallery" className="py-20 bg-gradient-to-b from-orange-50 to-white relative overflow-hidden">
@@ -121,7 +177,6 @@ const GallerySection = () => {
           </p>
         </motion.div>
 
-       
         {/* Gallery Grid with Masonry Layout */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -153,6 +208,7 @@ const GallerySection = () => {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={index < 3}
                         />
                       </div>
                       
@@ -186,55 +242,92 @@ const GallerySection = () => {
         </motion.div>
 
         {/* View More Button */}
-     <Link href="/gallery">
-  {filteredItems.length > 0 && (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: 0.6 }}
-      className="flex justify-center mt-12"
-    >
-      <button className="px-8 py-3 bg-white border-2 border-red-300 text-red-700 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all hover:bg-red-50">
-        View More Photos
-      </button>
-    </motion.div>
-  )}
-</Link>
+        <Link href="/gallery">
+          {filteredItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex justify-center mt-12"
+            >
+              <button className="px-8 py-3 bg-white border-2 border-red-300 text-red-700 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all hover:bg-red-50">
+                View More Photos
+              </button>
+            </motion.div>
+          )}
+        </Link>
+      </div>
 
-        </div>
-
-        
-
-      {/* Lightbox Modal */}
+      {/* Enhanced Lightbox Modal - Using regular img tag for lightbox */}
       {selectedItem && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
+          {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-10"
+            className="absolute top-6 right-6 text-white p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-20"
           >
-            <X size={24} />
+            <X size={28} />
           </button>
-          
-          <div className="max-w-4xl w-full max-h-full flex items-center justify-center">
-            <div className="bg-white rounded-lg overflow-hidden">
+
+          {/* Navigation Buttons */}
+          {filteredItems.length > 1 && (
+            <>
+              <button
+                onClick={goToPrev}
+                className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-20"
+              >
+                <ChevronLeft size={32} />
+              </button>
+              <button
+                onClick={goToNext}
+                className="absolute right-6 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-20"
+              >
+                <ChevronRight size={32} />
+              </button>
+            </>
+          )}
+
+          {/* Image Counter */}
+          {filteredItems.length > 1 && (
+            <div className="absolute top-6 left-6 text-white bg-black/50 px-4 py-2 rounded-full z-20">
+              {currentIndex + 1} / {filteredItems.length}
+            </div>
+          )}
+
+          {/* Main Content - Using regular img tag */}
+          <div className="max-w-6xl w-full max-h-full flex items-center justify-center relative">
+<div className="rounded-xl overflow-hidden shadow-lg max-w-full max-h-full">
               {selectedItem.type === "image" ? (
-                <div className="w-full h-96 relative">
-                  <Image
+                <div className="flex items-center justify-center w-full h-full p-4">
+                  {/* Using regular img tag for lightbox to avoid Next.js Image issues */}
+                  <img
                     src={selectedItem.src}
                     alt={selectedItem.alt}
-                    fill
-                    className="object-contain"
-                    sizes="100vw"
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg"
                   />
                 </div>
               ) : (
-                <div className="aspect-video w-full">
+                <div className="aspect-video w-full max-w-4xl">
                   <iframe
                     src={selectedItem.src}
                     title={selectedItem.alt}
                     className="w-full h-full"
                     allowFullScreen
                   />
+                </div>
+              )}
+            </div>
+
+            {/* Caption */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-center bg-black/50 px-6 py-3 rounded-full max-w-2xl">
+              <h3 className="text-lg font-semibold">{selectedItem.alt}</h3>
+              {selectedItem.tags && selectedItem.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 justify-center mt-2">
+                  {selectedItem.tags.map(tag => (
+                    <span key={tag} className="text-xs bg-white/30 px-3 py-1 rounded-full">
+                      #{tag}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
