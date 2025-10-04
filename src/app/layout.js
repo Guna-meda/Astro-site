@@ -23,7 +23,7 @@ export const metadata = {
     title: "Indu Mouli | Astrology, Vastu & Purohit Services",
     description:
       "Astrology, Vastu, and traditional Pooja services by Indu Mouli in Bangalore. Trusted purohit with years of experience.",
-    url: "https://yourdomain.com", // change this to your real domain
+    url: "https://sadgurujyothisyalayam.com", 
     siteName: "Indu Mouli",
     images: [
       {
