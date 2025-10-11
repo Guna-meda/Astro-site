@@ -1,0 +1,13 @@
+# Allow all search engines to crawl your public content
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /backup/
+
+# Allow everything else
+Allow: /
+
+# Sitemap location for faster indexing
+Sitemap: https://sadgurujyothishyalayam.com/sitemap.xml
