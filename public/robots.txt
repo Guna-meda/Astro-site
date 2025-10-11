@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sadgurujyothisyalayam.com
+
+# Sitemaps
+Sitemap: https://sadgurujyothisyalayam.com/sitemap.xml
