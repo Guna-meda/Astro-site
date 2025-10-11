@@ -2,6 +2,8 @@ import ClientLayout from "@/components/ClientLayout";
 import "./globals.css";
 import Image from "next/image";
 import Head from "next/head"; // Import Next.js Head component
+import Script from "next/script";
+import GtagClient from "@/components/GtagClient";
 
 export const metadata = {
   title: "Sadguru Jyothishyalayam | Indu Mouli – Expert in Astrology, Vastu & Traditional Pooja Services",
@@ -70,6 +72,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Google Analytics - Global site tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-37J2X738BP"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);} 
+gtag('js', new Date());
+gtag('config', 'G-37J2X738BP');`}
+        </Script>
+
         <Head>
           <script
             type="application/ld+json"
@@ -137,6 +151,7 @@ export default function RootLayout({ children }) {
         </div>
 
         <ClientLayout>{children}</ClientLayout>
+        <GtagClient />
       </body>
     </html>
   );
