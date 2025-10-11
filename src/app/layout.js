@@ -3,7 +3,7 @@ import "./globals.css";
 import Image from "next/image";
 import Head from "next/head"; // Import Next.js Head component
 import Script from "next/script";
-import GtagClient from "@/components/GtagClient";
+import GtagWrapper from "@/components/GtagWrapper";
 
 export const metadata = {
   title: "Sadguru Jyothishyalayam | Indu Mouli – Expert in Astrology, Vastu & Traditional Pooja Services",
@@ -151,7 +151,7 @@ gtag('config', 'G-37J2X738BP');`}
         </div>
 
         <ClientLayout>{children}</ClientLayout>
-        <GtagClient />
+        <GtagWrapper />
       </body>
     </html>
   );

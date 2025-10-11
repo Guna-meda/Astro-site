@@ -1,21 +1,22 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function GtagClient() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // We'll read search params from window.location on the client inside the effect
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    const search = window.location.search || "";
     // Fire a page_view event for SPA navigations
     if (window.gtag) {
       window.gtag("event", "page_view", {
-        page_path: pathname + (searchParams ? `?${searchParams.toString()}` : ""),
+        page_path: pathname + search,
       });
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }
