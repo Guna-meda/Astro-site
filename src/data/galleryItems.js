@@ -593,6 +593,34 @@ const galleryItems = [
     title: null,
     tags: ["Satyanarayana Pooja"],
   },
+  {
+    id: 90,
+    type: "image",
+    src: "/images/Gallary/For website/WhatsApp Image 2026-06-29 at 2.50.19 PM.jpeg",
+    title: null,
+    tags: ["Shri Chakra Pooja"],
+  },
+  {
+    id: 91,
+    type: "image",
+    src: "/images/Gallary/For website/WhatsApp Image 2026-06-29 at 2.52.10 PM (2).jpeg",
+    title: null,
+    tags: ["Shri Chakra Pooja"],
+  },
+  {
+    id: 92,
+    type: "image",
+    src: "/images/Gallary/For website/WhatsApp Image 2026-06-29 at 2.52.10 PM (1).jpeg",
+    title: null,
+    tags: ["Shrinivasa Kalyanam"],
+  },
+  {
+    id: 93,
+    type: "image",
+    src: "/images/Gallary/For website/WhatsApp Image 2026-06-29 at 2.52.10 PM.jpeg",
+    title: null,
+    tags: ["Shrinivasa Kalyanam"],
+  },
 ];
 
 export default galleryItems;
