@@ -102,9 +102,6 @@ export default function BlogPostPage({ params }) {
             Back to Guides
           </Link>
 
-          <span className="inline-block text-xs font-semibold uppercase tracking-wide text-orange-700 bg-orange-100 rounded-full px-3 py-1 mb-4">
-            {post.category}
-          </span>
 
           <h1 className="text-3xl md:text-5xl font-bold text-primary-dark font-heading mb-5 max-w-4xl leading-tight">
             {post.title}
@@ -121,11 +118,7 @@ export default function BlogPostPage({ params }) {
             </span>
           </div>
 
-          {/* Direct answer block — the "50-90 word answer up top" that
-              answer engines extract as a self-contained passage. */}
-          <div className="max-w-3xl bg-white/90 backdrop-blur rounded-xl border border-orange-200 shadow-sm p-6">
-            <p className="text-lg text-text-primary leading-relaxed">{post.directAnswer}</p>
-          </div>
+          
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" fill="none">
@@ -194,6 +187,30 @@ export default function BlogPostPage({ params }) {
                       </table>
                     </div>
                   )}
+
+                  {/* Sanskrit verse blocks — each verse is its own self-contained
+                      Devanagari / IAST / translation unit, deliberately structured
+                      so an answer engine can extract exactly one verse cleanly
+                      rather than needing to parse a long undivided passage. */}
+                  {section.verses && (
+                    <div className="space-y-4 mt-2">
+                      {section.verses.map((verse, v) => (
+                        <div
+                          key={v}
+                          className="rounded-lg border border-orange-100 bg-orange-50/60 px-5 py-4"
+                        >
+                          <p className="font-heading text-lg text-primary-dark mb-1.5 leading-relaxed">
+                            {verse.sanskrit}
+                          </p>
+                          <p className="text-sm italic text-orange-700 mb-2">{verse.iast}</p>
+                          <p className="text-text-secondary text-sm leading-relaxed">
+                            <span className="font-semibold text-text-primary">Meaning: </span>
+                            {verse.translation}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
 
@@ -207,14 +224,45 @@ export default function BlogPostPage({ params }) {
                 </div>
               )}
 
+              {/* Sources — named, linked, checkable references. Per the
+                  underlying research (see the citation plan), citing
+                  real sources is the single strongest, most consistent
+                  lever for getting picked up by answer engines — this
+                  is a real reference list, not decoration. */}
+              {post.sources?.length > 0 && (
+                <div>
+                  <h2 className="text-2xl font-heading font-semibold text-primary-dark mb-4">
+                    Sources
+                  </h2>
+                  <ol className="space-y-2 list-decimal list-inside">
+                    {post.sources.map((src, i) => (
+                      <li key={i} className="text-sm text-text-secondary leading-relaxed">
+                        {src.url ? (
+                          <a
+                            href={src.url}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="text-primary hover:text-primary-dark underline underline-offset-2"
+                          >
+                            {src.label}
+                          </a>
+                        ) : (
+                          src.label
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
               {/* Draft-content disclosure — honest, and itself a small
                   first-hand-expertise/E-E-A-T signal once reviewed. */}
               <div className="flex items-start gap-3 bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
                 <AlertTriangle size={18} className="flex-shrink-0 mt-0.5" />
                 <span>
-                  This guide reflects general practice and is reviewed by Indu Mouli for
-                  accuracy against his own tradition. Specific steps, items, and timing can
-                  vary by family custom — please confirm details for your ceremony directly.
+                  {post.category === "Vedic Wisdom"
+                    ? "This article summarizes real, cited research — but reflects a small number of studies at an early stage. Findings may be refined by future, larger studies; treat this as current evidence, not a final scientific conclusion."
+                    : "This guide reflects general practice and is reviewed by Indu Mouli for accuracy against his own tradition. Specific steps, items, and timing can vary by family custom — please confirm details for your ceremony directly."}
                 </span>
               </div>
             </div>
